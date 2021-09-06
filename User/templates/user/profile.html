@@ -1,0 +1,59 @@
+{% extends 'login_base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row profile">
+
+		<div class="col-md-3">
+			 {% if messages %}
+						{% for message in messages %}
+            				<div class="alert alert-{{messages.tags}}">{{ message }}</div>
+
+						{% endfor %}
+    				{% endif %}
+		</div>
+		<div class="col-md-6">
+            <div class="row shadow p-3 mb-5 bg-white rounded">
+                <div class="col">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img src="{{user.profile.image.url}}" class="img-responsive rounded-circle pl-5 py-3" alt="">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name py-4 px-auto">
+						<h3><mark>{{user.username}}</mark></h3>
+					</div>
+					<div class="profile-usertitle-job py-4">
+
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons px-4">
+					<button type="button" class="btn btn-success btn-sm " style="margin-right:7px">Follow</button>
+					<button type="button" class="btn btn-danger btn-sm" >Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				 <h4><legend class="border-bottom md-4 py-3"></legend></h4>
+				 <h4><legend class="border-bottom md-4 py-3">{{user.email}}</legend></h4>
+
+
+			</div>
+            </div>
+           </div>
+		</div>
+		<div class="col-md-3">
+            <a href="{% url 'home:profile_edit' %}"><button type="button" class="btn btn-success btn-sm " >Edit</button></a>
+		</div>
+	</div>
+</div>
+
+<br>
+<br>
+
+{% endblock content %}

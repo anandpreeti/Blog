@@ -1,0 +1,59 @@
+{% extends 'login_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row profile">
+
+
+			<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<form method="POST" enctype="multipart/form-data">
+						{% csrf_token %}
+						<div class="row shadow p-3 mb-5 bg-white rounded">
+							<div class="col">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="profile-sidebar">
+											<!-- PROFILE IMAGE -->
+											<div class="profile-userpic">
+												<img src="{{user.profile.image.url}}" class="img-responsive rounded-circle" alt="Profile Image">
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+											{{p_form|crispy}}
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col">
+										{{u_form|crispy}}
+									</div>
+
+								</div>
+								<div class="row">
+									<div class="col">
+										{{pinfo_form|crispy}}
+									</div>
+
+								</div>
+							</div>
+					   </div>
+							<a href="home:profile_edit"><button type="submit" class="btn btn-success btn-sm " >Update</button></a>
+					</form>
+				</div>
+				<div class="col-md-2">
+
+				</div>
+		</div>
+
+	</div>
+
+
+<br>
+<br>
+
+{% endblock content %}
